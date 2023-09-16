@@ -1,2 +1,2 @@
-# td-project-2
- Techdegree Project 2: Data Pagination and Filtering
+# Tech Degree Project 2: Data Pagination and Filtering
+    Project is going for Exceeds Expectations
