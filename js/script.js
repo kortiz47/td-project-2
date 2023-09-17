@@ -14,13 +14,18 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
-//list parameter represents an array of student objects
-//page parameter represents the requested page number
-
+/**
+ * global scope variables
+ */
 const itemsPerPage = 9;
 const studentListUL = document.querySelector('.student-list');
 const pageBtns = document.querySelector('.link-list');
 
+/**
+ * 'showPage' function - will append elements to display a page of 9 students max
+ * @param {Array} list - the list parameter represents an array of objects that contain information about each student
+ * @param {number} page - the page parameter represents the requested page number that you want to see
+ */
 function showPage(list, page){
    const startIndex = (page*itemsPerPage) - itemsPerPage;
    const endIndex = (page*itemsPerPage);
@@ -49,7 +54,10 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
-//list parameter represents an array of student objects
+/**
+ * 'addPagination' function will add student elements to page based on which button is clicked
+ * @param {Array} list - the list parameter represents an array of objects that contain information about each student
+ */
 function addPagination(list){
    const numPaginationBtns = Math.ceil(list.length/9);
    pageBtns.innerHTML='';
@@ -75,7 +83,7 @@ function addPagination(list){
 }
 
 /** 
- * Below is the code to add a search component to the project
+ * Global scope variables and appended HTML to include a search bar and functionality
  */
 
 //Extra Credit PART1: Add a Search Component
@@ -91,7 +99,10 @@ header.insertAdjacentHTML('beforeend', searchBarHTML);
 
 //Extra Credit PART2: Add Search Functionality
 
-//search function
+/**
+ * 'search' function - takes user input from the search bar and searches to see if there is a match in first and last names in the data array and appends those elements to the page
+ * @param - no parameters
+ */
 function search(){
    const searchMatchArray = [];
    const userInput = document.querySelector('#search').value.toLowerCase();
@@ -113,20 +124,26 @@ function search(){
    
 }
 
-
-//search works as user types in search into the search bar
+/**
+ * event listener set up to initialize the search function on the 'keyup' event when typing the search bar
+ */
 const searchBar = header.querySelector('.student-search');
 searchBar.addEventListener('keyup', ()=>{
    search();
 });
 
-//search works when search/submit button is clicked
+/**
+ * event listener set up to initialize the search function on the 'click' event when a user clicks the search icon on the search bar - this allows user to search even if they copy&paste information into the search and do not trigger a 'keyup' event
+ */
 const searchBtn = searchBar.querySelector('button');
 searchBtn.addEventListener('click', ()=>{
    search();
 });
 
 
+/**
+ * initializes 'addPagination' and showPage' functions as defaults when a user first opens the page 
+ */
 // // Call functions
 addPagination(data);
 showPage(data, 1);
