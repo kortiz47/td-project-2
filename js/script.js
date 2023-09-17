@@ -22,11 +22,12 @@ This function will create and insert/append the elements needed to display a "pa
 //page parameter represents the requested page number
 
 const itemsPerPage = 9;
+const studentListUL = document.querySelector('.student-list');
+
 function showPage(list, page){
    const startIndex = (page*itemsPerPage) - itemsPerPage;
    const endIndex = (page*itemsPerPage);
    //need to declare and assign value to itemsPerPage
-   const studentListUL = document.querySelector('.student-list');
    studentListUL.innerHTML = '';
    for(let i=0; i<list.length; i++){
       if(i>=startIndex && i<endIndex){
@@ -96,19 +97,39 @@ header.insertAdjacentHTML('beforeend', searchBarHTML);
 //Extra Credit PART2: Add Search Functionality
 
 //search function
-
+function search(){
+   const searchMatchArray = [];
+   const userInput = document.querySelector('#search').value.toLowerCase();
+   for(i=0; i<data.length; i++){
+      const studentFirstName = data[i].name.first.toLowerCase();
+      const studentLastName = data[i].name.last.toLowerCase();
+      const studentFullName = studentFirstName.concat(" ", studentLastName);
+      if(studentFullName.includes(userInput)){
+         searchMatchArray.push(data[i]);
+      }
+   }
+   if(searchMatchArray.length>0){
+      addPagination(searchMatchArray);
+      showPage(searchMatchArray, 1);
+   }else{
+      studentListUL.innerHTML = '<h1>No Results Found...</h1>';
+   }
+   
+}
 
 
 //search works as user types in search into the search bar
 const searchBar = header.querySelector('.student-search');
 searchBar.addEventListener('keyup', ()=>{
    //run function to search
+   search();
 });
 
 //search works when search/submit button is clicked
 const searchBtn = searchBar.querySelector('button');
 searchBtn.addEventListener('click', ()=>{
    //run function to search
+   search();
 });
 
 
