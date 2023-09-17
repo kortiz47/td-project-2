@@ -3,15 +3,11 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-
-
 /*
 For assistance:
    Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
-
-
 
 /*
 Create the `showPage` function
@@ -23,11 +19,11 @@ This function will create and insert/append the elements needed to display a "pa
 
 const itemsPerPage = 9;
 const studentListUL = document.querySelector('.student-list');
+const pageBtns = document.querySelector('.link-list');
 
 function showPage(list, page){
    const startIndex = (page*itemsPerPage) - itemsPerPage;
    const endIndex = (page*itemsPerPage);
-   //need to declare and assign value to itemsPerPage
    studentListUL.innerHTML = '';
    for(let i=0; i<list.length; i++){
       if(i>=startIndex && i<endIndex){
@@ -56,7 +52,6 @@ This function will create and insert/append the elements needed for the paginati
 //list parameter represents an array of student objects
 function addPagination(list){
    const numPaginationBtns = Math.ceil(list.length/9);
-   const pageBtns = document.querySelector('.link-list');
    pageBtns.innerHTML='';
    for(let i=0; i<numPaginationBtns; i++){
       const pageBtn = `
@@ -66,8 +61,8 @@ function addPagination(list){
       `;
       pageBtns.insertAdjacentHTML('beforeend', pageBtn);
    }
-   const firstPageBtn = pageBtns.querySelector('button');
-   firstPageBtn.className = 'active'
+   const firstPageBtn = pageBtns.querySelector('button')
+   firstPageBtn.className = 'active';
    pageBtns.addEventListener('click', (e)=>{
       if(e.target.tagName === 'BUTTON'){
          const activeBtn = pageBtns.querySelector('.active');
@@ -113,6 +108,7 @@ function search(){
       showPage(searchMatchArray, 1);
    }else{
       studentListUL.innerHTML = '<h1>No Results Found...</h1>';
+      pageBtns.innerHTML = '';
    }
    
 }
@@ -121,14 +117,12 @@ function search(){
 //search works as user types in search into the search bar
 const searchBar = header.querySelector('.student-search');
 searchBar.addEventListener('keyup', ()=>{
-   //run function to search
    search();
 });
 
 //search works when search/submit button is clicked
 const searchBtn = searchBar.querySelector('button');
 searchBtn.addEventListener('click', ()=>{
-   //run function to search
    search();
 });
 
