@@ -109,14 +109,14 @@ function search(){
    for(i=0; i<data.length; i++){
       const studentFirstName = data[i].name.first.toLowerCase();
       const studentLastName = data[i].name.last.toLowerCase();
-      const studentFullName = studentFirstName.concat(" ", studentLastName);
+      const studentFullName = `${studentFirstName} ${studentLastName}`;
       if(studentFullName.includes(userInput)){
          searchMatchArray.push(data[i]);
       }
    }
    if(searchMatchArray.length>0){
       addPagination(searchMatchArray);
-      showPage(searchMatchArray, 1);
+      showPage(searchMatchArray, );
    }else{
       studentListUL.innerHTML = '<h1>No Results Found...</h1>';
       pageBtns.innerHTML = '';
