@@ -65,12 +65,12 @@ function addPagination(list){
       `;
       pageBtns.insertAdjacentHTML('beforeend', pageBtn);
    }
-   const firstPageBtn = document.querySelector('button');
+   const firstPageBtn = pageBtns.querySelector('button');
    firstPageBtn.className = 'active'
    pageBtns.addEventListener('click', (e)=>{
       if(e.target.tagName === 'BUTTON'){
          const activeBtn = pageBtns.querySelector('.active');
-         activeBtn.removeAttribute('class');
+         activeBtn.removeAttribute('class', 'active');
          const clickedBtn = e.target.closest('button');
          clickedBtn.className = 'active'
          showPage(data,clickedBtn.innerHTML);
@@ -78,6 +78,23 @@ function addPagination(list){
    });
 }
 
+/** 
+ * Below is the code to add a search component to the project
+ */
+
+//Extra Credit PART1: Add a Search Component
+const header = document.querySelector('.header');
+console.log(header);
+const searchBarHTML = `
+   <label for="search" class="student-search">
+      <span>Search by name</span>
+      <input id="search" placeholder="Search by name...">
+      <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label>
+`;
+header.insertAdjacentHTML('beforeend', searchBarHTML);
+
+//Extra Credit PART2: Add Search Functionality
 
 // // Call functions
 addPagination(data);
