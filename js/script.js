@@ -84,7 +84,6 @@ function addPagination(list){
 
 //Extra Credit PART1: Add a Search Component
 const header = document.querySelector('.header');
-console.log(header);
 const searchBarHTML = `
    <label for="search" class="student-search">
       <span>Search by name</span>
@@ -95,6 +94,23 @@ const searchBarHTML = `
 header.insertAdjacentHTML('beforeend', searchBarHTML);
 
 //Extra Credit PART2: Add Search Functionality
+
+//search function
+
+
+
+//search works as user types in search into the search bar
+const searchBar = header.querySelector('.student-search');
+searchBar.addEventListener('keyup', ()=>{
+   //run function to search
+});
+
+//search works when search/submit button is clicked
+const searchBtn = searchBar.querySelector('button');
+searchBtn.addEventListener('click', ()=>{
+   //run function to search
+});
+
 
 // // Call functions
 addPagination(data);
