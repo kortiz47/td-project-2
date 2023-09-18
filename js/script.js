@@ -116,7 +116,7 @@ function search(){
    }
    if(searchMatchArray.length>0){
       addPagination(searchMatchArray);
-      showPage(searchMatchArray, );
+      showPage(searchMatchArray, 1);
    }else{
       studentListUL.innerHTML = '<h1>No Results Found...</h1>';
       pageBtns.innerHTML = '';
