@@ -77,7 +77,7 @@ function addPagination(list){
          activeBtn.removeAttribute('class', 'active');
          const clickedBtn = e.target.closest('button');
          clickedBtn.className = 'active';
-         showPage(data,clickedBtn.innerHTML);
+         showPage(list,clickedBtn.innerHTML);
       }
    });
 }
